@@ -12,9 +12,10 @@ import folium
 from folium.plugins import Draw
 from streamlit_folium import st_folium
 import requests
+import os
 
-# Configuration
-API_URL = "http://localhost:8000"
+# Configuration - Use environment variable for Docker, fallback to localhost for local dev
+API_URL = os.getenv("API_URL", "http://localhost:8000")
 BOUNDS = {
     "min_lon": 106.685455, "min_lat": -6.372739,
     "max_lon": 106.973814, "max_lat": -6.074049
