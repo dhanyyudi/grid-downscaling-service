@@ -11,9 +11,9 @@ RUN apt-get update && apt-get install -y \
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# geosquare-grid: mount at runtime and install
-# docker run -v /path/to/geosquare-grid:/tmp/gsq ... 
-# pip install /tmp/gsq
+# Install geosquare-grid package
+COPY geosquare-grid ./geosquare-grid
+RUN pip install --no-cache-dir ./geosquare-grid
 
 # Copy application code
 COPY config.py .
