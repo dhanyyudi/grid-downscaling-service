@@ -4,7 +4,7 @@
 import os
 
 # Data paths - can be overridden via environment variables
-DATA_PATH = os.getenv("DATA_PATH", "gsq_material_dtengineer.parquet")
+DATA_PATH = os.getenv("PARQUET_PATH", "gsq_material_dtengineer.parquet")
 
 # IDW interpolation parameters
 IDW_POWER = 2.0  # Standard inverse square weighting
