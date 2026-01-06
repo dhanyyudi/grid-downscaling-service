@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  # Backend API Service
+  api:
+    build: ./api
+    container_name: grid-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data:ro
+    environment:
+      - PARQUET_PATH=/app/data/gsq_material_dtengineer.parquet
+    restart: unless-stopped
+    networks:
+      - grid-network
+
+  # Frontend Web UI
+  frontend:
+    build: ./frontend
+    container_name: grid-frontend
+    ports:
+      - "8502:8501"
+    environment:
+      - API_URL=http://api:8000
+    depends_on:
+      - api
+    restart: unless-stopped
+    networks:
+      - grid-network
+
+networks:
+  grid-network:
+    driver: bridge

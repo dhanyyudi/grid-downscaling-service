@@ -1,0 +1,27 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# System deps for rtree (spatial indexing)
+RUN apt-get update && apt-get install -y \
+    libspatialindex-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Python deps
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# geosquare-grid: mount at runtime and install
+# docker run -v /path/to/geosquare-grid:/tmp/gsq ... 
+# pip install /tmp/gsq
+
+# Copy application code
+COPY config.py .
+COPY models.py .
+COPY main.py .
+COPY routes ./routes
+COPY services ./services
+
+EXPOSE 8000
+
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]

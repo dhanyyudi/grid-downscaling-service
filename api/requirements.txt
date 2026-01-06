@@ -1,0 +1,13 @@
+# Python dependencies for the Grid Downscaling API
+
+fastapi>=0.109.0
+uvicorn>=0.27.0
+pandas>=2.0.0
+pyarrow>=14.0.0
+shapely>=2.0.0
+pyproj>=3.6.0
+rtree>=1.1.0
+pydantic>=2.0.0
+
+# geosquare-grid: Install separately
+# pip install ./geosquare-grid
