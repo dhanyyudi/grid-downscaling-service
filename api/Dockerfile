@@ -2,18 +2,18 @@ FROM python:3.11-slim
 
 WORKDIR /app
 
-# System deps for rtree (spatial indexing)
+# System deps for rtree (spatial indexing) + git for pip install from GitHub
 RUN apt-get update && apt-get install -y \
     libspatialindex-dev \
+    git \
     && rm -rf /var/lib/apt/lists/*
 
 # Python deps
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Install geosquare-grid package
-COPY geosquare-grid ./geosquare-grid
-RUN pip install --no-cache-dir ./geosquare-grid
+# Install geosquare-grid from GitHub
+RUN pip install --no-cache-dir git+https://github.com/geosquareai/geosquare-grid.git
 
 # Copy application code
 COPY config.py .

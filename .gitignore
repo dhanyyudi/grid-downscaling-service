@@ -35,6 +35,3 @@ logs/
 # Data files (challenge data - not included in repo)
 data/
 *.parquet
-
-# Geosquare library (proprietary)
-geosquare-grid/
