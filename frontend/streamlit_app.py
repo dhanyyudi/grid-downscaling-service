@@ -24,7 +24,7 @@ CENTER = {"lat": -6.223394, "lon": 106.829634}
 
 # Page config
 st.set_page_config(
-    page_title="Land Value Insight",
+    page_title="Grid Downscaling Service",
     page_icon="🗺️",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -112,7 +112,7 @@ def main():
     
     # Sidebar
     with st.sidebar:
-        st.title("🗺️ Land Value Insight")
+        st.title("🗺️ Grid Downscaling")
         st.markdown("---")
         
         mode = st.radio(
